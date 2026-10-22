@@ -1,0 +1,100 @@
+erDiagram
+    USERS {
+        uuid user_id PK
+        string email UK
+        string password_hash
+        string full_name
+        string role
+        datetime created_at
+    }
+    CANDIDATE_PROFILES {
+        uuid candidate_id PK
+        uuid user_id FK "nullable UK; self-serve account"
+        string phone
+        string location
+        string headline
+        text summary
+        datetime created_at
+    }
+    COMPANIES {
+        uuid company_id PK
+        string name
+        string industry
+        string website
+        datetime created_at
+    }
+    EMPLOYER_MEMBERSHIPS {
+        uuid membership_id PK
+        uuid company_id FK
+        uuid user_id FK
+        string membership_role
+        string status
+        datetime joined_at
+    }
+    JOB_POSTINGS {
+        uuid job_id PK
+        uuid company_id FK
+        uuid created_by_membership_id FK
+        string title
+        text description
+        string location
+        string status
+        datetime posted_at
+    }
+    SKILLS {
+        uuid skill_id PK
+        string name UK
+        string category
+    }
+    JOB_SKILLS {
+        uuid job_id PK_FK
+        uuid skill_id PK_FK
+        string importance
+        int minimum_level
+    }
+    RESUMES {
+        uuid resume_id PK
+        uuid candidate_id FK
+        uuid uploaded_by_user_id FK "nullable"
+        string file_url
+        string file_name
+        datetime uploaded_at
+    }
+    APPLICATIONS {
+        uuid application_id PK
+        uuid job_id FK
+        uuid candidate_id FK
+        uuid created_by_membership_id FK "nullable for self-application"
+        string source
+        string status
+        datetime applied_at
+    }
+    CANDIDATE_SKILLS {
+        uuid candidate_id PK_FK
+        uuid skill_id PK_FK
+        int proficiency_level
+        int years_experience
+    }
+    MATCH_RESULTS {
+        uuid match_id PK
+        uuid application_id FK_UK
+        decimal score
+        text explanation
+        datetime calculated_at
+    }
+
+    USERS o|--o| CANDIDATE_PROFILES : "has candidate profile (optional)"
+    USERS ||--o{ EMPLOYER_MEMBERSHIPS : "joins company as"
+    COMPANIES ||--o{ EMPLOYER_MEMBERSHIPS : "has members"
+    COMPANIES ||--o{ JOB_POSTINGS : "publishes"
+    EMPLOYER_MEMBERSHIPS ||--o{ JOB_POSTINGS : "creates"
+    JOB_POSTINGS ||--o{ JOB_SKILLS : "requires"
+    SKILLS ||--o{ JOB_SKILLS : "listed in"
+    CANDIDATE_PROFILES ||--o{ RESUMES : "has"
+    USERS o|--o{ RESUMES : "uploads (optional account)"
+    JOB_POSTINGS ||--o{ APPLICATIONS : "receives"
+    CANDIDATE_PROFILES ||--o{ APPLICATIONS : "candidate submits / employer adds"
+    EMPLOYER_MEMBERSHIPS o|--o{ APPLICATIONS : "records employer-added application"
+    CANDIDATE_PROFILES ||--o{ CANDIDATE_SKILLS : "has"
+    SKILLS ||--o{ CANDIDATE_SKILLS : "describes"
+    APPLICATIONS ||--o| MATCH_RESULTS : "has latest match"

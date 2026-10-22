@@ -1,0 +1,30 @@
+.job-card-link{display:block;color:inherit}
+.job-card-link:focus-visible{outline:3px solid #70a685;outline-offset:3px}
+.listing-page{min-height:100vh}
+.listing-wrap{padding-top:54px;padding-bottom:90px}
+.listing-wrap>.back-home{margin-bottom:36px}
+.listing-title{font-size:clamp(46px,6vw,66px);line-height:1.08;letter-spacing:-2.5px;margin:18px 0 12px}
+.listing-intro{color:#737e76;font-size:14px;margin:0 0 35px}
+.listing-content .job-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.listing-message{max-width:650px;padding:20px 0;color:#6f7a72;font-size:13px;line-height:1.7}
+.listing-message.form-error{padding:13px}
+.detail-wrap{padding-top:40px;padding-bottom:90px}
+.detail-wrap>.back-home{margin-bottom:22px}
+.job-detail-card{max-width:850px;margin:0 auto;background:#fff;border:1px solid #e8ece5;border-radius:12px;padding:clamp(24px,5vw,52px);box-shadow:0 16px 45px #26392d0a}
+.detail-eyebrow{font-size:10px;letter-spacing:1.2px;font-weight:700;color:#639275}
+.detail-title-row{display:flex;justify-content:space-between;align-items:center;gap:25px;margin-top:12px}
+.detail-title-row h1{font-size:clamp(30px,4vw,43px);line-height:1.15;letter-spacing:-1.5px;margin:0}
+.detail-company{font-size:15px;color:#718078;margin:11px 0 0}
+.detail-symbol{width:54px;height:54px;font-size:25px;flex:0 0 auto}
+.detail-meta{display:flex;gap:24px;margin-top:26px;color:#68766d;font-size:12px}
+.detail-divider{height:1px;background:#edf0eb;margin:30px 0}
+.job-detail-card>h2{font-size:18px;margin:0 0 12px}
+.job-description{white-space:pre-wrap;color:#56635b;font-size:14px;line-height:1.9;margin:0}
+.apply-panel{display:grid;grid-template-columns:1fr auto;align-items:center;gap:18px;margin-top:36px;padding:22px;background:#f3f6f0;border-radius:9px}
+.apply-panel h2{font-size:15px;margin:0 0 6px}
+.apply-panel p{color:#78837b;font-size:11px;margin:0}
+.apply-panel .button{min-width:180px}
+.candidate-hint{max-width:230px;color:#718078;font-size:11px;line-height:1.6;text-align:right}
+.apply-feedback{grid-column:1/-1}
+.jobs-empty{color:#7b867d;font-size:12px}
+@media(max-width:700px){.listing-content .job-grid{grid-template-columns:1fr}.listing-wrap{padding-top:35px}.job-detail-card{padding:22px 18px}.detail-meta{gap:12px;flex-wrap:wrap}.apply-panel{grid-template-columns:1fr}.apply-panel .button{width:100%}.candidate-hint{text-align:left}.detail-title-row{align-items:flex-start}.detail-symbol{width:42px;height:42px;font-size:20px}}
